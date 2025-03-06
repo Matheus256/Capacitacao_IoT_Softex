@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "Ruan Delgado Gomes",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -62.5, "left": -14.6, "attrs": {} },
+    { "type": "wokwi-microsd-card", "id": "sd1", "top": 19.43, "left": -239.93, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 108.74,
+      "left": 153.83,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": -170.2,
+      "left": -29.4,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "sd1:VCC", "esp:3V3", "red", [ "h12.86", "v105", "h138.6", "v0.74", "h98.44" ] ],
+    [ "sd1:SCK", "esp:D14", "violet", [ "h32.92", "v28.59" ] ],
+    [ "esp:D15", "sd1:CS", "blue", [ "h18.19", "v74.32", "h-152.97" ] ],
+    [ "esp:D13", "sd1:DI", "orange", [ "h-23.13", "v-28.89" ] ],
+    [ "sd1:DO", "esp:D12", "green", [ "h27.47", "v58.48" ] ],
+    [ "esp:GND.1", "sd1:GND", "black", [ "h8.5", "v53.46", "h-134.46", "v-121.67" ] ],
+    [ "esp:D18", "oled1:SCL", "green", [ "h0" ] ],
+    [ "oled1:SDA", "esp:D19", "green", [ "v0" ] ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v-19.2", "h-76.65", "v-48" ] ],
+    [ "esp:D35", "ntc1:OUT", "green", [ "h-38.4", "v-86.8", "h153.6" ] ],
+    [ "ntc1:VCC", "esp:3V3", "red", [ "h9.6", "v240" ] ],
+    [ "ntc1:GND", "esp:GND.1", "black", [ "h19.2", "v48" ] ]
+  ],
+  "dependencies": {}
+}
