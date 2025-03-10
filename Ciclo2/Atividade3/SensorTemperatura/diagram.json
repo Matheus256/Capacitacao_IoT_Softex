@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "author": "Ruan Delgado Gomes",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 51.95,
+      "left": 124.8,
+      "attrs": { "value": "100" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led8",
+      "top": -13.2,
+      "left": 186.6,
+      "attrs": { "color": "green", "flip": "1" }
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 31.4,
+      "left": -173.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -156.8,
+      "left": -109.6,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": -172.8, "left": -211.8, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -124.04, "left": -211.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "led8:A", "r1:2", "green", [ "v28.8", "h-28.8" ] ],
+    [ "led8:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "ntc1:GND", "esp:GND.2", "black", [ "h19.2", "v96" ] ],
+    [ "ntc1:VCC", "esp:3V3", "red", [ "h28.8", "v144", "h134.4", "v-9.6" ] ],
+    [ "ntc1:OUT", "esp:D32", "green", [ "h0" ] ],
+    [ "r1:1", "esp:D19", "green", [ "v0" ] ],
+    [ "lcd1:SDA", "esp:D21", "green", [ "h-19.2", "v96.2", "h240", "v67.2" ] ],
+    [ "lcd1:SCL", "esp:D22", "green", [ "h-9.6", "v96.3", "h240", "v28.8" ] ],
+    [ "lcd1:GND", "gnd1:GND", "black", [ "h-28.8", "v-38.4" ] ],
+    [ "lcd1:VCC", "vcc1:VCC", "red", [ "h-28.8", "v28.9", "h-67.2" ] ]
+  ],
+  "dependencies": {}
+}
